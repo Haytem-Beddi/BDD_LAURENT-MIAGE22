@@ -52,4 +52,36 @@ ClassMethod CreerVoiture() As %Status
     Quit tSC
 }
 
+ClassMethod CreerReservation() As %Status
+{
+    #dim tSC As %Status = $$$OK
+    Set msg = ##class(msg.creerReservationDmde).%New()
+
+    Set data=%request.Content
+    $$$TOE(tSC,msg.%JSONImport(data))
+
+    set tSC = ##class(Ens.Director).CreateBusinessService("ServiceReservation",.tService) if $$$ISERR(tSC) quit 
+    set tSC = tService.ProcessInput(msg,.response,"creerReservation")
+    Set %response.Status = 200
+    Set %response.ContentType = ..#CONTENTTYPEJSON
+    Do response.%JSONExport()
+    Quit tSC
+}
+
+ClassMethod verifierReservation() As %Status
+{
+    #dim tSC As %Status = $$$OK
+    Set msg = ##class(msg.verifierReservationDmde).%New()
+
+    Set data=%request.Content
+    $$$TOE(tSC,msg.%JSONImport(data))
+
+    set tSC = ##class(Ens.Director).CreateBusinessService("ServiceReservation",.tService) if $$$ISERR(tSC) quit 
+    set tSC = tService.ProcessInput(msg,.response,"verifierReservation")
+    Set %response.Status = 200
+    Set %response.ContentType = ..#CONTENTTYPEJSON
+    Do response.%JSONExport()
+    Quit tSC
+}
+
 }
