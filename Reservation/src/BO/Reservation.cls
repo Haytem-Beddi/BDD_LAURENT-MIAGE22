@@ -34,7 +34,7 @@ Method creerReservation(pRequest As msg.creerReservationDmde, Output pResponse A
     }
     else {
         set pResponse.codeRetour = "KO"
-        set pResponse.libErreur = "Aucune voiture pour cette catégorie"
+        set pResponse.libErreur = "Aucune voiture disponible"
         Quit $$$OK
     }
     
@@ -50,7 +50,7 @@ Method verifierReservation(pRequest As msg.verifierReservationDmde, Output pResp
 
     if '(idVoiture) {
         set pResponse.codeRetour = "KO"
-        set pResponse.libErreur = "Pas de voiture" 
+        set pResponse.libErreur = "Voiture inconnu" 
         Quit $$$OK
     }
 
@@ -62,7 +62,7 @@ Method verifierReservation(pRequest As msg.verifierReservationDmde, Output pResp
     do SQLrequest.%Next()
     if (SQLrequest.%Get("voiture")) {
         set pResponse.codeRetour = "KO"
-        set pResponse.libErreur = "Déjà en cours de réservation" 
+        set pResponse.libErreur = "En cours de reservation à l'instant" 
     }
     else{
         set pResponse.codeRetour = "OK"

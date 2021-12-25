@@ -1,4 +1,4 @@
-Class msg.creerReservationRpse Extends msg.basic.reponse
+Class msg.supprimerVoitureRpse Extends msg.basic.reponse
 {
 
 Storage Default

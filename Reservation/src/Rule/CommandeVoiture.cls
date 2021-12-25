@@ -1,3 +1,4 @@
+/// 
 Class Rule.CommandeVoiture Extends Ens.Rule.Definition
 {
 
@@ -10,7 +11,7 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <rule name="">
 <constraint name="source" value="ServiceFichierVoitureCommande"></constraint>
 <when condition="1=1">
-<send transform="Transform.voitureCommandeToReservation" target="Voiture"></send>
+<send transform="Transform.voitureCommandeToReservationTransform" target="Voiture"></send>
 </when>
 </rule>
 </ruleSet>
